@@ -4,5 +4,4 @@ git pull origin master && npm install
 
 echo Run server
 
-
-pm2 restart index 
+pm2 restart index.js 
