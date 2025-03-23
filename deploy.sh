@@ -1,6 +1,6 @@
 echo install dependencies
 
-git pull origin master && npm install 
+git pull origin master --no-ff && npm install 
 
 echo Run server
 
