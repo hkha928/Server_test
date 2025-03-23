@@ -1,0 +1,30 @@
+name: CI - Node.js Project
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      
+      - name: SSH to VPS
+        uses: appleboy/ssh-action@master
+        with: 
+          host: 14.225.215.36
+          username: root
+          password: 5jYvTjK6ujdt2QsEUaFcrJ7
+          script: 'cd app/Server_test && sudo chmod u=rwx,g=rw,o=r deploy.sh && ./deploy.sh'
+
